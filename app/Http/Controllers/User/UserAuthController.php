@@ -127,28 +127,52 @@ class UserAuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        $user = User::where('email', $request->email)->first();
+    $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return back()->withErrors(['email' => 'Invalid credentials']);
-        }
-
-        if (!$user->is_verified) {
-            return redirect()->route('verify.form')
-                ->with('email', $user->email);
-        }
-
-        Auth::login($user);
-
-        return redirect('/userdashboard');
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        return back()->withErrors(['email' => 'Invalid credentials']);
     }
 
+    if (!$user->is_verified) {
+        return redirect()->route('verify.form')
+            ->with('email', $user->email);
+    }
+
+    Auth::login($user);
+
+    /*
+    |--------------------------------------------------------------------------
+    | CART MERGE LOGIC (IMPORTANT)
+    |--------------------------------------------------------------------------
+    */
+
+    if (session()->has('cart')) {
+
+        foreach (session('cart') as $productId => $item) {
+
+            \App\Models\CartItem::updateOrCreate(
+                [
+                    'user_id'    => $user->id,
+                    'product_id' => $productId,
+                ],
+                [
+                    'quantity' => $item['quantity'],
+                    'price'    => $item['price'],
+                ]
+            );
+        }
+
+        session()->forget('cart'); // remove session cart after merge
+    }
+
+    return redirect('/userdashboard');
+}
     public function logout()
     {
         Auth::logout();

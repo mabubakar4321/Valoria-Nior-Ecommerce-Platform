@@ -36,4 +36,13 @@ class User extends Authenticatable
         'is_verified' => 'boolean',
         'reset_expires_at' => 'datetime',
     ];
+    public function cartItems()
+{
+    return $this->hasMany(CartItem::class);
+}
+
+public function orders()
+{
+    return $this->hasMany(Order::class);
+}
 }

@@ -164,7 +164,7 @@ body{
     <h2>Welcome Back</h2>
     <p>Sign in to your admin account</p>
 
-    <form method="POST" action="{{ route('admin.login.form') }}">
+    <form method="POST" action="{{ route('admin.login.for') }}">
         @csrf
 
         <div class="input-group">

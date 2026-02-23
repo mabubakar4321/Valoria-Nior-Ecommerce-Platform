@@ -263,6 +263,73 @@ footer{
     text-align:center;
     font-size:14px;
 }
+.trending-section {
+    padding: 80px 0;
+    background: #f9f7f4;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.product-card {
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card h4 {
+    margin-top: 18px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.price {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.price .old {
+    text-decoration: line-through;
+    margin-right: 8px;
+    color: #999;
+}
+
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .product-card img {
+        height: 320px;
+    }
+}
+
+@media (max-width: 576px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* RESPONSIVE */
 @media(max-width:1000px){
@@ -286,6 +353,7 @@ footer{
         grid-template-columns:1fr;
     }
 }
+
 
 </style>
 </head>
@@ -330,33 +398,50 @@ footer{
 </div>
 
 <!-- TRENDING -->
-<section>
+<section class="trending-section">
 <div class="container">
-    <div class="section-title">
+
+    <div class="section-title text-center mb-5">
         <h2>Trending Now</h2>
     </div>
-    <div class="products">
-        <div class="product">
-            <img src="https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg">
-            <h4>Pink Serum</h4>
-            <div class="price"><span class="old">$75</span>$59</div>
+
+    <div class="products-grid">
+
+        @foreach($products as $product)
+
+        <div class="product-card">
+
+            <a href="{{ route('products.detail',$product->id) }}">
+
+                @if($product->images->first())
+                    <img src="{{ asset('storage/'.$product->images->first()->image) }}"
+                         alt="{{ $product->name }}">
+                @endif
+
+            </a>
+
+            <h4>{{ $product->name }}</h4>
+
+            <div class="price">
+
+                @if($product->discount_price)
+                    <span class="old">
+                        RS {{ number_format($product->original_price,2) }}
+                    </span>
+
+                    RS {{ number_format($product->discount_price,2) }}
+                @else
+                    RS {{ number_format($product->original_price,2) }}
+                @endif
+
+            </div>
+
         </div>
-        <div class="product">
-            <img src="https://images.pexels.com/photos/3373726/pexels-photo-3373726.jpeg">
-            <h4>Golden Cream</h4>
-            <div class="price"><span class="old">$75</span>$59</div>
-        </div>
-        <div class="product">
-            <img src="https://images.pexels.com/photos/6621416/pexels-photo-6621416.jpeg">
-            <h4>Blue Lotion</h4>
-            <div class="price"><span class="old">$75</span>$59</div>
-        </div>
-        <div class="product">
-            <img src="https://images.pexels.com/photos/6621460/pexels-photo-6621460.jpeg">
-            <h4>Glow Oil</h4>
-            <div class="price"><span class="old">$75</span>$59</div>
-        </div>
+
+        @endforeach
+
     </div>
+
 </div>
 </section>
 

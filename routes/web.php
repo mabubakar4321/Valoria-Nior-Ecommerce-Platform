@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GoogleController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminDashboard\homeController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\UserDashboard\userDashboardController;
 use App\Http\Controllers\WelcomeController;
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[WelcomeController::class,'welcome'])->name('welcome');
+Route::get('/product/{id}', [WelcomeController::class, 'show'])->name('products.detail');
 
-
-
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/remove/{key}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count');
+Route::post('/cart/update/{key}', [CartController::class, 'update'])->name('cart.update');
 
 
 
@@ -39,7 +44,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('login/adminpanel', [AuthController::class, 'showLogin'])
             ->name('login');
 
-        Route::post('login', [AuthController::class, 'login']) ->name('login.form');;
+        Route::post('login', [AuthController::class, 'login']) ->name('login.for');;
 
         Route::get('auth/google', [GoogleController::class, 'redirect'])
             ->name('google');
@@ -110,7 +115,7 @@ Route::get('/User/register', [UserAuthController::class, 'showRegister'])->name(
 Route::post('/register', [UserAuthController::class, 'register'])->name('register');
 
 Route::get('/user/login', [UserAuthController::class, 'showLogin'])->name('login.form');
-Route::post('/login', [UserAuthController::class, 'login'])->name('login');
+Route::post('/login', [UserAuthController::class, 'login'])->name('login.user');
 });
 Route::get('/verify', [UserAuthController::class, 'showVerify'])->name('verify.form');
 Route::post('/verify', [UserAuthController::class, 'verify'])->name('verify');
@@ -133,5 +138,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/userdashboard', [userDashboardController::class, 'index'])
         ->name('dashboard');
+
+    //      Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    //      Route::get('/cart/count', [CartController::class,'count'])->name('cart.count');
+    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    // Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    // Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
 });
