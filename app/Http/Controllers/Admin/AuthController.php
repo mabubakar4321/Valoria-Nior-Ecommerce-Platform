@@ -34,7 +34,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.login')->with('success', 'Admin registered');
+        return redirect()->route('admin.adminlogin')->with('success', 'Admin registered');
     }
 
     public function showLogin()
@@ -68,7 +68,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.adminlogin');
     }
 
 
@@ -137,7 +137,7 @@ public function resetPassword(Request $request)
         ->where('email', $request->email)
         ->delete();
 
-    return redirect()->route('admin.login')
+    return redirect()->route('admin.adminlogin')
         ->with('success', 'Password updated successfully.');
 }
    public function profile()

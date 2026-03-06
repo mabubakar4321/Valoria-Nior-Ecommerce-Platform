@@ -135,7 +135,7 @@
 <div class="card">
     <h2>Sign In</h2>
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login.user') }}">
         @csrf
 
         <div class="form-group">

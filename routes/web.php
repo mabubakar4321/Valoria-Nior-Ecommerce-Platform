@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\GoogleController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminDashboard\homeController;
-use App\Http\Controllers\CartController;
+
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\UserDashboard\userDashboardController;
 use App\Http\Controllers\WelcomeController;
@@ -17,13 +17,23 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[WelcomeController::class,'welcome'])->name('welcome');
-Route::get('/product/{id}', [WelcomeController::class, 'show'])->name('products.detail');
+Route::get('about',[WelcomeController::class,'about'])->name('about');
+Route::get('products',[WelcomeController::class, 'products'])->name('products');
+Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
+Route::get('singleproduct/{id}',[WelcomeController::class, 'singleproduct'])->name('single.product');
+Route::post('/favourite/add/{id}', [WelcomeController::class, 'addToFavourite'])->name('favourite.add');
+Route::post('/favourite/remove/{id}', [WelcomeController::class, 'removeFromFavourite'])->name('favourite.remove');
+Route::get('/favourite/list', [WelcomeController::class, 'favouriteList'])->name('favourite.list');
 
-Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/remove/{key}', [CartController::class, 'remove'])->name('cart.remove');
-Route::get('/cart/count', [CartController::class, 'count'])->name('cart.count');
-Route::post('/cart/update/{key}', [CartController::class, 'update'])->name('cart.update');
+
+
+Route::post('/cart/add/{id}', [WelcomeController::class, 'addToCart']);
+Route::get('/cart/data', [WelcomeController::class, 'getCartData']);
+Route::post('/cart/remove/{id}', [WelcomeController::class, 'removeFromCart']);
+Route::post('/cart/update/{id}', [WelcomeController::class, 'updateCartQty']);
+
+
+
 
 
 
@@ -42,9 +52,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('register', [AuthController::class, 'register']);
 
         Route::get('login/adminpanel', [AuthController::class, 'showLogin'])
-            ->name('login');
+            ->name('adminlogin');
 
-        Route::post('login', [AuthController::class, 'login']) ->name('login.for');;
+        Route::post('login/adminpanel/insert', [AuthController::class, 'login']) ->name('login.foradmin');;
 
         Route::get('auth/google', [GoogleController::class, 'redirect'])
             ->name('google');

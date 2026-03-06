@@ -178,7 +178,7 @@ body{
 
     <div class="footer">
         Already have an account?
-        <a href="{{ route('admin.login') }}">Sign in</a>
+        <a href="{{ route('admin.adminlogin') }}">Sign in</a>
     </div>
 
 </div>

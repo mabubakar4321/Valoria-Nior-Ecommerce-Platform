@@ -10,4 +10,7 @@ class ProductImage extends Model
     'product_id',
     'image',
 ];
+public function images(){
+    return $this->hasMany(ProductImage::class);
+}
 }

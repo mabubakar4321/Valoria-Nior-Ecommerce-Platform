@@ -1,508 +1,482 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Be Bold - Beauty Store</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family: 'Segoe UI', sans-serif;
-    background:#f6f4f5;
-    color:#222;
-}
-
-.container{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
-}
-
-section{
-    padding:90px 0;
-}
-
-/* HEADER */
-header{
-    background:#fff;
-    border-bottom:1px solid #eee;
-}
-
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 0;
-}
-
-.logo{
-    font-weight:700;
-    font-size:22px;
-}
-
-.logo span{
-    font-weight:300;
-    font-size:12px;
-    display:block;
-    letter-spacing:2px;
-}
-
-.nav-links a{
-    margin:0 18px;
-    text-decoration:none;
-    color:#333;
-    font-size:14px;
-    letter-spacing:.5px;
-}
-
-/* HERO */
-.hero{
-    background:#cda1a8;
-    color:#fff;
-}
-
-.hero-content{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.hero-text{
-    width:45%;
-}
-
-.hero-text h1{
-    font-size:48px;
-    font-weight:500;
-    margin-bottom:20px;
-}
-
-.hero-text p{
-    margin-bottom:25px;
-    font-size:16px;
-}
-
-.btn{
-    padding:12px 28px;
-    background:#fff;
-    color:#000;
-    text-decoration:none;
-    font-size:13px;
-    letter-spacing:1px;
-}
-
-.hero-image{
-    width:50%;
-}
-
-.hero-image img{
-    width:100%;
-    border-radius:10px;
-}
-
-/* LOGO STRIP */
-.logos{
-    background:#fff;
-    padding:40px 0;
-    display:flex;
-    justify-content:space-around;
-    border-bottom:1px solid #eee;
-}
-
-.logos div{
-    opacity:.6;
-    font-weight:600;
-}
-
-/* SECTION TITLES */
-.section-title{
-    text-align:center;
-    margin-bottom:50px;
-}
-
-.section-title h2{
-    font-size:32px;
-    font-weight:500;
-}
-
-/* PRODUCTS */
-.products{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-}
-
-.product{
-    background:#fff;
-    padding:20px;
-    text-align:center;
-    border-radius:8px;
-    transition:.3s;
-}
-
-.product:hover{
-    transform:translateY(-5px);
-}
-
-.product img{
-    width:100%;
-    height:280px;
-    object-fit:cover;
-    border-radius:6px;
-}
-
-.product h4{
-    margin:15px 0 8px;
-    font-weight:500;
-}
-
-.price{
-    font-size:14px;
-}
-
-.old{
-    text-decoration:line-through;
-    color:#888;
-    margin-right:6px;
-}
-
-/* TEAL PROMO */
-.promo{
-    background:linear-gradient(to right,#2e8f96,#66b4b9);
-    color:#fff;
-}
-
-.promo-content{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.promo-text{
-    width:45%;
-}
-
-.promo-text h2{
-    font-size:38px;
-    margin-bottom:20px;
-}
-
-.promo-image{
-    width:50%;
-}
-
-.promo-image img{
-    width:100%;
-}
-
-/* COLLECTION */
-.collections{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.collection-box{
-    position:relative;
-    color:#fff;
-    padding:80px 50px;
-    border-radius:10px;
-    background-size:cover;
-    background-position:center;
-}
-
-.collection-box h3{
-    font-size:28px;
-    margin-bottom:15px;
-}
-
-/* FEATURES */
-.features{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
-    text-align:center;
-}
-
-.feature{
-    background:#fff;
-    padding:35px;
-    border-radius:8px;
-}
-
-/* NEWSLETTER */
-.newsletter{
-    background:#eee;
-    text-align:center;
-}
-
-.newsletter input{
-    padding:12px;
-    width:300px;
-    border:1px solid #ccc;
-}
-
-.newsletter button{
-    padding:12px 20px;
-    border:none;
-    background:#000;
-    color:#fff;
-}
-
-/* FOOTER */
-footer{
-    background:#fff;
-    padding:50px 0;
-    border-top:1px solid #eee;
-    text-align:center;
-    font-size:14px;
-}
-.trending-section {
-    padding: 80px 0;
-    background: #f9f7f4;
-}
-
-.section-title h2 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.product-card {
-    text-align: center;
-    transition: 0.3s ease;
-}
-
-.product-card img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    transition: 0.4s ease;
-}
-
-.product-card:hover img {
-    transform: scale(1.05);
-}
-
-.product-card h4 {
-    margin-top: 18px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.price {
-    margin-top: 6px;
-    font-size: 14px;
-}
-
-.price .old {
-    text-decoration: line-through;
-    margin-right: 8px;
-    color: #999;
-}
-
-@media (max-width: 992px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-
-    .product-card img {
-        height: 320px;
-    }
-}
-
-@media (max-width: 576px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* RESPONSIVE */
-@media(max-width:1000px){
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .hero-content,
-    .promo-content{
-        flex-direction:column;
-    }
-    .hero-text,
-    .hero-image,
-    .promo-text,
-    .promo-image{
-        width:100%;
-    }
-    .collections{
-        grid-template-columns:1fr;
-    }
-    .features{
-        grid-template-columns:1fr;
-    }
-}
-
-
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="container nav">
-    <div class="logo">Be Bold <span>BEAUTY STORE</span></div>
-    <div class="nav-links">
-        <a href="#">SHOP ALL</a>
-        <a href="#">MAKEUP</a>
-        <a href="#">SKIN CARE</a>
-        <a href="#">HAIR CARE</a>
-        <a href="#">ABOUT</a>
-        <a href="#">CONTACT</a>
-    </div>
-</div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-<div class="container hero-content">
-    <div class="hero-text">
-        <h1>The New Beauty Collection</h1>
-        <p>This new collection brings exciting beauty products to elevate your daily routine.</p>
-        <a href="#" class="btn">SHOP NOW</a>
-    </div>
-    <div class="hero-image">
-        <img src="https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg" alt="">
-    </div>
-</div>
-</section>
-
-<!-- LOGOS -->
-<div class="logos container">
-    <div>LOGOIPSUM</div>
-    <div>LOGOIPSUM</div>
-    <div>LOGOIPSUM</div>
-    <div>LOGOIPSUM</div>
-    <div>LOGOIPSUM</div>
-</div>
-
-<!-- TRENDING -->
-<section class="trending-section">
-<div class="container">
-
-    <div class="section-title text-center mb-5">
-        <h2>Trending Now</h2>
-    </div>
-
-    <div class="products-grid">
-
-        @foreach($products as $product)
-
-        <div class="product-card">
-
-            <a href="{{ route('products.detail',$product->id) }}">
-
-                @if($product->images->first())
-                    <img src="{{ asset('storage/'.$product->images->first()->image) }}"
-                         alt="{{ $product->name }}">
-                @endif
-
-            </a>
-
-            <h4>{{ $product->name }}</h4>
-
-            <div class="price">
-
-                @if($product->discount_price)
-                    <span class="old">
-                        RS {{ number_format($product->original_price,2) }}
-                    </span>
-
-                    RS {{ number_format($product->discount_price,2) }}
-                @else
-                    RS {{ number_format($product->original_price,2) }}
-                @endif
-
+@extends('frontedlayout.main')
+@section('code')
+ <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>Valoria Nior — Where Style Begins</h4>
+                                <span>Premium fashion for men, women & kids &amp; — designed to stand out.</span>
+                                <div class="main-border-button">
+                                    <a href="{{ route('products') }}">Purchase Now!</a>
+                                </div>
+                            </div  >
+                            <img src="{{ asset('website/assets/images/2314.jpg') }}" alt="" height="893" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Women</h4>
+                                            <span>Modern style, effortless grace.</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Women</h4>
+                                                <p>Designed to inspire confidence.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{{ route('products') }}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('website/assets/images/2341-fotor-2026022792034.jpg') }}" height="390"    >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Men</h4>
+                                            <span>Sharp style for every occasion.</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Men</h4>
+                                                <p>Where strength meets style.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{{ route('products') }}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('website/assets/images/12345678.jpg') }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Kids</h4>
+                                            <span>Playful style, everyday comfort.</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Kids</h4>
+                                                <p>Made for little adventures.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{{ route('products') }}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('website/assets/images/EBTKS6-4092_6-fotor-2026022794256.jpg') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Boys</h4>
+                                            <span>Bold style for little champs.</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Boys</h4>
+                                                <p>Cool looks, all day comfort.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{{ route('products') }}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('website/assets/images/0L4A9075_EBTKS5-4055.jpg') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
-        @endforeach
-
     </div>
+    <!-- ***** Main Banner Area End ***** -->
 
-</div>
-</section>
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="men">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Latest Men’s Collection</h2>
+                        <span>Explore our newest men’s styles, designed with modern cuts and timeless appeal for every occasion.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="men-item-carousel">
+                        <div class="owl-men-item owl-carousel">
+                           @foreach ($products  as $product)
+                                <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{{ route('single.product',$product->id) }}"><i class="fa fa-eye"></i></a></li>
+                                           <li>
+    <a href="javascript:void(0);" 
+       onclick="addToFavourite({{ $product->id }})"
+       title="Add to Favourite">
+        <i class="fa fa-heart"></i>
+    </a>
+</li>
+                                            <li>
+<a href="javascript:void(0)"
+onclick="addToCart({{ $product->id }})">
+<i class="fa fa-shopping-cart"></i>
+</a>
+</li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ asset(asset('storage/'.$product->images->first()->image)) }}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ $product->name }}</h4>
+                                    <span>PKR {{ $product->discount_price }}</span>
+                                        <ul class="stars">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+                                </div>
+                            </div>
+                           @endforeach
+      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Men Area Ends ***** -->
 
-<!-- PROMO -->
-<section class="promo">
-<div class="container promo-content">
-    <div class="promo-text">
-        <h2>The beauty collection that makes all the difference!</h2>
-        <a href="#" class="btn">SHOP NOW</a>
-    </div>
-    <div class="promo-image">
-        <img src="https://images.pexels.com/photos/6621464/pexels-photo-6621464.jpeg">
-    </div>
-</div>
-</section>
+    <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Latest Women’s Collection</h2>
+                        <span>Step into the season with fresh arrivals designed to bring confidence, comfort, and effortless style.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="women-item-carousel">
+                        <div class="owl-women-item owl-carousel">
+                          @foreach ( $productss as $productsss )
+                                <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{{ route('single.product',$productsss->id) }}"><i class="fa fa-eye"></i></a></li>
+                                            <li>
+    <a href="javascript:void(0);" 
+       onclick="addToFavourite({{ $productsss->id }})"
+       title="Add to Favourite">
+        <i class="fa fa-heart"></i>
+    </a>
+</li>
+                                           <li>
+<a href="javascript:void(0)"
+onclick="addToCart({{ $productsss->id }})">
+<i class="fa fa-shopping-cart"></i>
+</a>
+</li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ asset(asset('storage/'.$productsss->images->first()->image)) }}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ $productsss->name }}</h4>
+                                    <span>{{ $productsss->discount_price }}</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                          @endforeach
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Women Area Ends ***** -->
 
-<!-- COLLECTION -->
-<section>
-<div class="container collections">
-    <div class="collection-box" style="background-image:url('https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg')">
-        <h3>Awesome Makeup Gift Sets</h3>
-        <a href="#" class="btn">SHOP NOW</a>
-    </div>
-    <div class="collection-box" style="background-image:url('https://images.pexels.com/photos/6621333/pexels-photo-6621333.jpeg')">
-        <h3>The Ultimate Skincare Regime</h3>
-        <a href="#" class="btn">SHOP NOW</a>
-    </div>
-</div>
-</section>
+    <!-- ***** Kids Area Starts ***** -->
+    <section class="section" id="kids">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Latest Kids Collection</h2>
+                        <span>Explore our newest kids’ styles, designed with comfort, quality, and playful charm in mind.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kid-item-carousel">
+                        <div class="owl-kid-item owl-carousel">
+                            @foreach ($kids as $productes )
+                                <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{{ route('single.product',$productes->id) }}"><i class="fa fa-eye"></i></a></li>
+                                            <li>
+    <a href="javascript:void(0);" 
+       onclick="addToFavourite({{ $productes->id }})"
+       title="Add to Favourite">
+        <i class="fa fa-heart"></i>
+    </a>
+</li>
+                                          <li>
+<a href="javascript:void(0)"
+onclick="addToCart({{ $productes->id }})">
+<i class="fa fa-shopping-cart"></i>
+</a>
+</li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ asset(asset('storage/'.$productes->images->first()->image)) }}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ $productes->name }}</h4>
+                                    <span>{{ $productes->discount_price }}</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endforeach
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Kids Area Ends ***** -->
 
-<!-- FEATURES -->
-<section>
-<div class="container features">
-    <div class="feature">
-        <h4>Fast Delivery</h4>
-        <p>Quick and secure shipping.</p>
-    </div>
-    <div class="feature">
-        <h4>Free Shipping</h4>
-        <p>Free shipping on all orders.</p>
-    </div>
-    <div class="feature">
-        <h4>Easy Returns</h4>
-        <p>30-day return policy.</p>
-    </div>
-</div>
-</section>
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Trending Products Collection</h2>
+                        <span>Explore our thoughtfully curated product collection, where quality craftsmanship meets contemporary design. Each piece is carefully selected to deliver comfort, durability, and style, ensuring you find the perfect match for every occasion.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Discover our Best Collection, featuring handpicked styles that represent the finest in quality.</p>
+                        </div>
+                        <p>Discover the best clothing products on our website, carefully selected for their superior quality, modern design, and lasting comfort. Elevate your wardrobe today and shop your favorites with confidence.</p>
+                        <p>Our best clothing collection brings together timeless fashion and contemporary trends <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">support us</a> Don’t miss out—browse and buy your perfect outfit today.</p>
+                        <div class="main-border-button">
+                            <a href="{{ route('products') }}
+                            ">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Classic Menswear</h4>
+                                    <span>Latest Collection</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="{{ asset('website/assets/images/photo-1532453288672-3a27e9be9efd.avif') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="{{ asset('website/assets/images/female-clothing-store-retail-display-in-shopping-mall-with-discount-sales-tag.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Signature Styles</h4>
+                                    <span>Over 304 Products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-<div class="container">
-    <h3>Subscribe to our newsletter</h3>
-    <br>
-    <input type="email" placeholder="Your email address">
-    <button>SUBSCRIBE</button>
-</div>
-</section>
+    <!-- ***** Social Area Starts ***** -->
+    <section class="section" id="social">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Valoria Nior</h2>
+                        <span>Valoria Nior is where modern fashion meets timeless elegance, offering refined styles for every occasion.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row images">
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Fashion</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/photo-1441984904996-e0b6ba687e04.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>New</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/premium_photo-1664202525979-80d1da46b34b.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Brand</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/premium_photo-1731170991803-af071821b1f7.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Makeup</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/premium_photo-1723795218392-c3f86694bf87.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Leather</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/photo-1738215778388-f2823c7fcf07.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="thumb">
+                        <div class="icon">
+                            <a href="http://instagram.com">
+                                <h6>Bag</h6>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                        <img src="{{ asset('website/assets/images/premium_photo-1679056833770-1d1b745d0eff.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Social Area Ends ***** -->
 
-<footer>
-    © 2026 Be Bold | Powered by Be Bold
-</footer>
-
-</body>
-</html>
+    <!-- ***** Subscribe Area Starts ***** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2>Subscribe to our store and enjoy a special 40% discount on your next shopping experience.</h2>
+                        <span>Don’t miss the chance to upgrade your style while saving more.</span>
+                    </div>
+                    <form id="subscribe" action="" method="get">
+                        <div class="row">
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="name" type="text" id="name" placeholder="Your Name" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-2">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            </fieldset>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                <li>Phone:<br><span>010-020-0340</span></li>
+                                <li>Office Location:<br><span>North Miami Beach</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                <li>Email:<br><span>info@company.com</span></li>
+                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
