@@ -365,3 +365,75 @@ padding:6px 10px;
 margin-top:120px;
 margin-bottom:60px;
 }
+.nav-fav,
+.cart-icon-wrapper,
+.header-profile{
+display:flex;
+align-items:center;
+}
+
+.fav-link,
+.cart-link{
+position:relative;
+font-size:18px;
+padding:8px;
+}
+
+#fav-count,
+.cart-badge{
+position:absolute;
+top:-6px;
+right:-10px;
+background:#ff4d4d;
+color:white;
+font-size:11px;
+padding:2px 6px;
+border-radius:50%;
+}
+.nav-fav,
+.cart-icon-wrapper,
+.header-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Icon styling */
+.fav-link,
+.cart-link {
+
+    position: relative;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+/* Badge styling */
+#fav-count,
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: #ff4d4d;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 50%;
+    line-height: 1;
+}
+.header-area .nav li {
+    display: flex;
+    align-items: center;
+}
+.header-area {
+    padding: 12px 0;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo img{
+    height: 50px;
+    margin-top: 6px;
+}
