@@ -89,7 +89,9 @@
         <div id="cartItems" class="cart-body"></div>
 
         <div class="cart-footer">
-            <button class="checkout-btn">CHECKOUT</button>
+            <button onclick="window.location.href='{{ route('checkout') }}'"
+            
+            class="checkout-btn">CHECKOUT</button>
         </div>
 
     </div>
@@ -342,6 +344,30 @@ function updateQty(id, qty){
         body: JSON.stringify({ quantity: qty })
     })
     .then(() => loadCart());
+}
+
+</script>
+
+<script>
+
+function removeFromCheckout(id){
+
+fetch('/cart/remove/' + id, {
+    method: 'POST',
+    headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        'Content-Type': 'application/json'
+    }
+})
+.then(res => res.json())
+.then(data => {
+
+    if(data.success){
+        location.reload();
+    }
+
+});
+
 }
 
 </script>

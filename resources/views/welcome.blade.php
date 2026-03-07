@@ -212,7 +212,7 @@ onclick="addToCart({{ $productsss->id }})">
                                 </div>
                                 <div class="down-content">
                                     <h4>{{ $productsss->name }}</h4>
-                                    <span>{{ $productsss->discount_price }}</span>
+                                    <span>PKR&nbsp{{ $productsss->discount_price }}</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -273,7 +273,7 @@ onclick="addToCart({{ $productes->id }})">
                                 </div>
                                 <div class="down-content">
                                     <h4>{{ $productes->name }}</h4>
-                                    <span>{{ $productes->discount_price }}</span>
+                                    <span>PKR&nbsp{{ $productes->discount_price }}</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>

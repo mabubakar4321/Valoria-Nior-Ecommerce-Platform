@@ -1,20 +1,9 @@
 @extends('frontedlayout.main')
 @section('code')
 
-<div class="page-heading" id="top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-content">
-                    <h2>Discover Our Signature Collection</h2>
-                    <span>Explore a refined range of men’s and women’s wear, designed with quality fabrics</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<section class="section" id="products">
+
+<section class="section products-page"  id="products">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

@@ -45,7 +45,7 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Customers</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="alert.html">Alert</a></li>
+                <li><a class="nav-link" href="{{ route('admin.admin.orders') }}">All Customer</a></li>
                
               </ul>
             </li>

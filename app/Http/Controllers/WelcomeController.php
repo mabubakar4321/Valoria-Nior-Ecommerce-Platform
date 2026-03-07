@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Session;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PDF;
+
 
 
 
@@ -166,5 +170,98 @@ public function updateCartQty(Request $request, $id)
 
     return response()->json(['success' => true]);
 }
+public function checkout()
+{
+    $cart = session()->get('cart', []);
+
+    $total = 0;
+
+    foreach($cart as $item){
+        $total += $item['price'] * $item['quantity'];
+    }
+
+    return view('checkout',compact('cart','total'));
+}
+
+public function placeOrder(Request $request)
+{
+
+    $cart = session()->get('cart', []);
+
+    if(!$cart){
+        return back();
+    }
+
+    $total = 0;
+
+    foreach($cart as $item){
+        $total += $item['price'] * $item['quantity'];
+    }
+
+    $order = Order::create([
+    'customer_name' => $request->name,
+    'email' => $request->email,
+    'phone' => $request->phone,
+    'address' => $request->address,
+    'total_amount' => $total,
+    'status' => 'pending'
+]);
+
+
+   foreach($cart as $id => $item){
+
+    OrderItem::create([
+        'order_id' => $order->id,
+        'product_id' => $id,
+        'quantity' => $item['quantity'],
+        'price' => $item['price']
+    ]);
+
+}
+    session()->forget('cart');
+
+    return redirect()->route('order.success',$order->id);
+}
+
+public function myOrders()
+{
+    $orders = Order::latest()->get();
+
+    return view('orders',compact('orders'));
+}
+public function downloadInvoice($id)
+{
+    $order = Order::with('items.product')->findOrFail($id);
+
+    $pdf = PDF::loadView('invoice', compact('order'));
+
+    return $pdf->download('invoice-'.$order->id.'.pdf');
+}
+
+public function orderSuccess($id)
+{
+    $order = Order::findOrFail($id);
+
+    return view('order-success',compact('order'));
+}
+
+public function removeCart($id)
+{
+    $cart = session()->get('cart', []);
+
+    if(isset($cart[$id])){
+        unset($cart[$id]);
+    }
+
+    session()->put('cart', $cart);
+
+    return response()->json([
+        'success' => true
+    ]);
+}
+
+
+
+
 
 }

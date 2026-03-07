@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GoogleController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminDashboard\homeController;
@@ -33,8 +34,12 @@ Route::post('/cart/remove/{id}', [WelcomeController::class, 'removeFromCart']);
 Route::post('/cart/update/{id}', [WelcomeController::class, 'updateCartQty']);
 
 
-
-
+Route::get('/checkout', [WelcomeController::class,'checkout'])->name('checkout');
+Route::post('/place-order', [WelcomeController::class,'placeOrder'])->name('place.order');
+Route::get('/order-success/{id}', [WelcomeController::class,'orderSuccess'])->name('order.success');
+Route::get('/my-orders', [WelcomeController::class,'myOrders'])->name('my.orders');
+Route::get('/download-invoice/{id}', [WelcomeController::class,'downloadInvoice'])->name('download.invoice');
+Route::post('/cart/remove/{id}', [WelcomeController::class, 'removeCart']);
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -108,6 +113,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('posters', PosterController::class)
     ->names('posters');
 
+
+
+
+    Route::get('/admin/orders', [OrderController::class,'index'])->name('admin.orders');
+
+Route::post('/admin/orders/status/{id}', [OrderController::class,'updateStatus'])->name('admin.orders.status');
+Route::delete('/admin/orders/delete/{id}', [OrderController::class,'destroy'])->name('admin.orders.delete');
 
             Route::resource('users', \App\Http\Controllers\Admin\UserController::class)
     ->names('users');

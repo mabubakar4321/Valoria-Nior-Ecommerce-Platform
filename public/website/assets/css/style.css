@@ -292,3 +292,76 @@
 
     border-radius: 50%;
 }
+
+.checkout-box{
+background:#f9f9f9;
+padding:25px;
+border-radius:8px;
+}
+
+.cart-item img{
+border-radius:6px;
+}
+
+.total-box{
+font-size:18px;
+border-top:1px solid #ddd;
+padding-top:10px;
+}
+.checkout-page{
+margin-top:120px;
+margin-bottom:80px;
+}
+
+.checkout-box{
+background:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.cart-item img{
+object-fit:cover;
+}
+.order-success-page{
+margin-top:140px;
+margin-bottom:100px;
+}
+
+.success-box{
+background:#fff;
+padding:50px 40px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.order-id{
+font-weight:600;
+letter-spacing:2px;
+}
+
+.my-orders-page{
+margin-top:140px;
+margin-bottom:80px;
+}
+
+.table{
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.table th{
+font-weight:600;
+}
+
+.badge{
+font-size:13px;
+padding:6px 10px;
+}
+
+.products-page{
+margin-top:120px;
+margin-bottom:60px;
+}

@@ -41,6 +41,15 @@
         </span>
     </a>
 </li>              
+<li class="header-profile">
+
+<a href="{{ url('/my-orders') }}" title="My Orders">
+
+<i class="fa fa-user"></i>
+
+</a>
+
+</li>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
