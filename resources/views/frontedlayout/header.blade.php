@@ -36,6 +36,9 @@
                         <li>
                             <a href="{{ route('contact') }}">Contact Us</a>
                         </li>
+                         <li>
+                            <a href="{{ route('admin.dashboard') }}">Admin</a>
+                        </li>
 
                         <!-- Favourite -->
                         <li class="nav-fav">
